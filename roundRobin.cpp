@@ -7,7 +7,7 @@ struct Process {
     int bt;
 };
 
-void findWaitingTime(Process processes[], int n, int bt[], int wt[], int quantum) {
+void findWaitingTime(Process processes[], int n, int bt[], int wt[], double quantum) {
     int rem_bt[n]; //copy of burst time for each process
     for (int i = 0; i < n; i++) {
         rem_bt[i] = processes[i].bt;
@@ -52,7 +52,7 @@ void findTurnAroundTime(Process processes[], int n, int bt[], int wt[], int tat[
     
 }
 
-void findAvgTime(Process processes[], int n, int quantum) {
+void findAvgTime(Process processes[], int n, double quantum) {
     int bt[n], wt[n], tat[n], total_wt = 0, total_tat = 0;
 
     findWaitingTime(processes, n, bt, wt, quantum);
@@ -76,7 +76,8 @@ void findAvgTime(Process processes[], int n, int quantum) {
 
 int main()
 {
-    int n, quantum;
+    int n;
+    double quantum;
     cout<< "Enter number of processes: ";
     cin>> n;
     cout<< "Enter time quantum: ";
